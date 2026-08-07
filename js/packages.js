@@ -16,9 +16,9 @@ const packages = {
         ]
     },
 
-    deluxe: {
-        title: "Deluxe Grazing Table",
-        image: "images/packages/deluxe.jpg",
+    hybrid: {
+        title: "Hybrid Grazing Table",
+        image: "images/packages/hybrid.jpg",
         price: "₦150,000",
         guests: "40 Guests",
         description:
@@ -67,20 +67,5 @@ const packages = {
         ]
     },
 
-    corporate: {
-        title: "Corporate Grazing Table",
-        image: "images/packages/corporate.jpg",
-        price: "₦180,000",
-        guests: "50 Guests",
-        description:
-            "Professional catering for meetings, conferences and office events.",
 
-        features: [
-            "Minimum of 50 guests",
-            "Corporate-friendly menu",
-            "Professional setup",
-            "Flexible serving options",
-            "Ideal for business events"
-        ]
-    }
 };
