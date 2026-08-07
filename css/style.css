@@ -43,6 +43,24 @@ body{
     line-height:1.7;
 }
 
+/*=====================================
+        PAGE FADE-IN
+======================================*/
+
+body{
+
+    opacity:0;
+
+    transition:opacity .4s ease;
+
+}
+
+body.loaded{
+
+    opacity:1;
+
+}
+
 h1,h2,h3,h4{
     font-family:'Playfair Display',serif;
     font-weight:700;

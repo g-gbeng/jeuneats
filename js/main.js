@@ -14,6 +14,16 @@ window.addEventListener("scroll", () => {
 
 });
 
+/*=====================================
+        PAGE FADE-IN
+======================================*/
+
+window.addEventListener("load", () => {
+
+    document.body.classList.add("loaded");
+
+});
+
 const menuToggle = document.querySelector(".menu-toggle");
 
 const navMenu = document.querySelector(".nav-links");
