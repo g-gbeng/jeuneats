@@ -1,7 +1,7 @@
 const packages = {
     classic: {
         title: "Classic Grazing Table",
-        image: "images/packages/classic.jpg",
+        image: "images/packages/Classic 2.jpeg",
         price: "₦85,000",
         guests: "20 Guests",
         description:
@@ -9,16 +9,33 @@ const packages = {
 
         features: [
             "Minimum of 20 guests",
-            "Premium grazing table styling",
+            "Excellent grazing table styling",
             "Freshly prepared selections",
             "Disposable serving ware included",
             "Setup and arrangement"
         ]
     },
 
+     brunch: {
+        title: "Brunch Grazing Table",
+        image: "images/packages/Brunch 2.jpeg",
+        price: "₦120,000",
+        guests: "30 Guests",
+        description:
+            "Perfect for daytime events featuring brunch-inspired selections.",
+
+        features: [
+            "Minimum of 30 guests",
+            "Breakfast & brunch menu",
+            "Fresh pastries",
+            "Fruit platters",
+            "Coffee station optional"
+        ]
+    },
+
     hybrid: {
         title: "Hybrid Grazing Table",
-        image: "images/packages/hybrid.jpg",
+        image: "images/packages/Hybrid 2.jpeg",
         price: "₦150,000",
         guests: "40 Guests",
         description:
@@ -35,7 +52,7 @@ const packages = {
 
     premium: {
         title: "Premium Grazing Table",
-        image: "images/packages/premium.jpg",
+        image: "images/packages/Premium 3.jpeg",
         price: "₦250,000",
         guests: "60 Guests",
         description:
@@ -50,22 +67,7 @@ const packages = {
         ]
     },
 
-    brunch: {
-        title: "Brunch Grazing Table",
-        image: "images/packages/brunch.jpg",
-        price: "₦120,000",
-        guests: "30 Guests",
-        description:
-            "Perfect for daytime events featuring brunch-inspired selections.",
-
-        features: [
-            "Minimum of 30 guests",
-            "Breakfast & brunch menu",
-            "Fresh pastries",
-            "Fruit platters",
-            "Coffee station optional"
-        ]
-    },
+    
 
 
 };
