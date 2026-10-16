@@ -1,79 +1,109 @@
+/*=====================================
+        PACKAGE MODAL
+======================================*/
+
 const modal = document.getElementById("packageModal");
 
 const cards = document.querySelectorAll(".package-card");
 
 const closeBtn = document.querySelector(".close-modal");
 
-cards.forEach(card => {
+const modalTitle = document.getElementById("modalTitle");
+const modalImage = document.getElementById("modalImage");
+const modalPrice = document.getElementById("modalPrice");
+const modalGuests = document.getElementById("modalGuests");
+const modalDescription = document.getElementById("modalDescription");
+const modalFeatures = document.getElementById("modalFeatures");
 
-    card.addEventListener("click", () => {
+let lastFocused = null;
 
-        const key = card.dataset.package;
+function openModal(key) {
 
-        const pkg = packages[key];
+    const pkg = packages[key];
 
-        document.getElementById("modalTitle").textContent = pkg.title;
+    if (!pkg) return;
 
-        document.getElementById("modalImage").src = pkg.image;
+    lastFocused = document.activeElement;
 
-        document.getElementById("modalImage").alt = pkg.title;
+    modalTitle.textContent = pkg.title;
 
-        document.getElementById("modalPrice").textContent =
-            "Starts From: " + pkg.price;
+    modalImage.src = pkg.image;
+    modalImage.alt = pkg.title;
 
-        document.getElementById("modalGuests").textContent =
-            "Minimum: " + pkg.guests;
+    modalPrice.textContent = "Starts From: " + pkg.price;
+    modalGuests.textContent = "Minimum: " + pkg.guests;
+    modalDescription.textContent = pkg.description;
 
-        document.getElementById("modalDescription").textContent =
-            pkg.description;
-
-        const list = document.getElementById("modalFeatures");
-
-        list.innerHTML = "";
-
-        pkg.features.forEach(feature => {
-
+    modalFeatures.replaceChildren(
+        ...pkg.features.map(feature => {
             const li = document.createElement("li");
-
             li.textContent = feature;
+            return li;
+        })
+    );
 
-            list.appendChild(li);
+    modal.querySelector(".modal-content").scrollTop = 0;
 
-        });
+    modal.classList.add("show");
 
-        modal.classList.add("show");
+    document.body.style.overflow = "hidden";
 
-        document.body.style.overflow = "hidden";
+    closeBtn.focus();
 
-    });
+}
 
-});
+function closeModal() {
 
-function closeModal(){
+    if (!modal.classList.contains("show")) return;
 
     modal.classList.remove("show");
 
     document.body.style.overflow = "";
 
+    if (lastFocused) lastFocused.focus();
+
 }
 
-closeBtn.addEventListener("click", closeModal);
+/* the whole card opens the modal; its "View Details" button
+   gives keyboard users something to Tab to */
+cards.forEach(card => {
 
-modal.addEventListener("click", e=>{
-
-    if(e.target===modal){
-
-        closeModal();
-
-    }
+    card.addEventListener("click", () => openModal(card.dataset.package));
 
 });
 
-document.addEventListener("keydown",e=>{
+closeBtn.addEventListener("click", closeModal);
 
-    if(e.key==="Escape"){
+/* click on the dark backdrop closes it */
+modal.addEventListener("click", e => {
 
+    if (e.target === modal) closeModal();
+
+});
+
+/* Esc closes; Tab stays inside the modal while it's open */
+document.addEventListener("keydown", e => {
+
+    if (!modal.classList.contains("show")) return;
+
+    if (e.key === "Escape") {
         closeModal();
+        return;
+    }
+
+    if (e.key === "Tab") {
+
+        const focusable = modal.querySelectorAll("button, a[href]");
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
 
     }
 

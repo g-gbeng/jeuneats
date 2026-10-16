@@ -1,28 +1,41 @@
+/*=====================================
+        STICKY HEADER
+        One passive listener, at most once per frame.
+======================================*/
+
 const header = document.querySelector("header");
+
+let headerScrolled = null;
+let scrollTicking = false;
+
+function updateHeader() {
+
+    scrollTicking = false;
+
+    const isScrolled = window.scrollY > 80;
+
+    if (isScrolled !== headerScrolled) {
+        header.classList.toggle("scrolled", isScrolled);
+        headerScrolled = isScrolled;
+    }
+
+}
 
 window.addEventListener("scroll", () => {
 
-    if(window.scrollY > 80){
-
-        header.classList.add("scrolled");
-
-    }else{
-
-        header.classList.remove("scrolled");
-
+    if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(updateHeader);
     }
 
-});
+}, { passive: true });
+
+updateHeader();
+
 
 /*=====================================
-        PAGE FADE-IN
+        MOBILE MENU
 ======================================*/
-
-window.addEventListener("load", () => {
-
-    document.body.classList.add("loaded");
-
-});
 
 const menuToggle = document.querySelector(".menu-toggle");
 
@@ -30,74 +43,84 @@ const navMenu = document.querySelector(".nav-links");
 
 const navLinks = document.querySelectorAll(".nav-links a");
 
+function setMenu(open) {
 
+    navMenu.classList.toggle("show", open);
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
 
-    link.addEventListener("click", () => {
-
-        navMenu.classList.remove("show");
-
-    });
-
-});
+}
 
 menuToggle.addEventListener("click", () => {
 
-    navMenu.classList.toggle("show");
-
-    const icon = menuToggle.querySelector("i");
-
-    icon.classList.toggle("fa-bars");
-    icon.classList.toggle("fa-xmark");
+    setMenu(!navMenu.classList.contains("show"));
 
 });
+
+navLinks.forEach(link => {
+
+    link.addEventListener("click", () => setMenu(false));
+
+});
+
+/* close when tapping outside the header, or pressing Esc */
+document.addEventListener("click", e => {
+
+    if (navMenu.classList.contains("show") && !header.contains(e.target)) {
+        setMenu(false);
+    }
+
+});
+
+document.addEventListener("keydown", e => {
+
+    if (e.key === "Escape" && navMenu.classList.contains("show")) {
+        setMenu(false);
+        menuToggle.focus();
+    }
+
+});
+
 
 /*=====================================
         ACTIVE NAVIGATION
+        Watches which section is just below the
+        header instead of measuring every section
+        on every scroll.
 ======================================*/
 
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll("section[id]");
 
-window.addEventListener("scroll", () => {
+const linkFor = new Map(
+    Array.from(navLinks, link => [link.getAttribute("href"), link])
+);
 
-    let current = "";
+const sectionObserver = new IntersectionObserver(entries => {
 
-    sections.forEach(section => {
+    entries.forEach(entry => {
 
-        const sectionTop = section.offsetTop - 140;
-        const sectionHeight = section.offsetHeight;
+        if (!entry.isIntersecting) return;
 
-        if (
+        navLinks.forEach(link => link.classList.remove("active"));
 
-            window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight
-
-        ){
-
-            current = section.id;
-
-        }
+        linkFor.get("#" + entry.target.id)?.classList.add("active");
 
     });
 
-    navLinks.forEach(link=>{
-
-        link.classList.toggle(
-
-            "active",
-
-            link.getAttribute("href") === "#" + current
-
-        );
-
-    });
-
+}, {
+    rootMargin: "-140px 0px -55% 0px"
 });
+
+sections.forEach(section => sectionObserver.observe(section));
 
 
 /*=====================================
         SCROLL REVEAL
+        Package cards appear one after another.
+        Once an element has appeared, the reveal
+        styles are removed so its own hover
+        effects work normally.
 ======================================*/
 
 const revealElements = document.querySelectorAll(`
@@ -110,33 +133,47 @@ const revealElements = document.querySelectorAll(`
     .footer-content
 `);
 
-revealElements.forEach(element => {
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    element.classList.add("reveal");
+if (!reducedMotion) {
 
-});
-
-const observer = new IntersectionObserver((entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("revealed");
-
-            observer.unobserve(entry.target);
-
-        }
-
+    revealElements.forEach(element => {
+        element.classList.add("reveal");
     });
 
-},{
-    threshold:0.15
-});
+    document.querySelectorAll(".package-card").forEach((card, i) => {
+        card.style.transitionDelay = (0.05 + i * 0.07).toFixed(2) + "s";
+    });
 
-revealElements.forEach(element=>{
+    const revealObserver = new IntersectionObserver((entries, observer) => {
 
-    observer.observe(element);
+        entries.forEach(entry => {
 
-});
+            if (!entry.isIntersecting) return;
 
+            const el = entry.target;
+
+            el.classList.add("revealed");
+
+            observer.unobserve(el);
+
+            el.addEventListener("transitionend", function done(e) {
+
+                if (e.target !== el || e.propertyName !== "opacity") return;
+
+                el.classList.remove("reveal", "revealed");
+                el.style.transitionDelay = "";
+
+                el.removeEventListener("transitionend", done);
+
+            });
+
+        });
+
+    }, {
+        threshold: 0.15
+    });
+
+    revealElements.forEach(element => revealObserver.observe(element));
+
+}

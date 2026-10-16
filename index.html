@@ -6,26 +6,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Jeun | Catering & Grazing Tables</title>
+    <title>Jęun | Catering &amp; Grazing Tables</title>
 
+    <meta
+        name="description"
+        content="Jęun creates beautifully curated catering and grazing tables for birthdays, brunches, weddings and corporate events. Explore our packages and book online."
+    >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap"
         rel="stylesheet">
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
 
     <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" href="css/animations.css">
-
     <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="js/packages.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/faq.js" defer></script>
+    <script src="js/main.js" defer></script>
 
 </head>
 
@@ -38,7 +41,7 @@
 
                 <div class="logo-container">
 
-                    <img src="images/hero/Jeunlogo.jpeg" alt="Jeun Logo" class="logo-image">
+                    <img src="images/hero/jeun-logo.webp" alt="" width="240" height="180" class="logo-image">
 
                 </div>
 
@@ -48,7 +51,7 @@
 
             </a>
 
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
 
                 <li><a href="#hero" class="active">Home</a></li>
 
@@ -62,15 +65,16 @@
 
             </ul>
 
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJHtPXCTONZ1l0MLhPXk3tu6ezKCepWCJlu-NFLzTanh9eEQ/viewform?fbzx=7140465393229716549&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" class="book-btn">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJHtPXCTONZ1l0MLhPXk3tu6ezKCepWCJlu-NFLzTanh9eEQ/viewform?fbzx=7140465393229716549&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener" class="book-btn">
 
                 Book Now
 
             </a>
 
-            <button class="menu-toggle" aria-label="Toggle Navigation">
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="navLinks" aria-expanded="false">
 
-                <i class="fa-solid fa-bars"></i>
+                <svg class="icon icon-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg class="icon icon-xmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
 
             </button>
 
@@ -129,7 +133,7 @@
 
                 <div class="about-image">
 
-                    <img src="images/about/Classic 3.jpeg" alt="Jeun Catering">
+                    <img src="images/about/classic-3.webp" alt="A Jęun grazing table set up at an event" width="1100" height="825" loading="lazy" decoding="async">
 
                 </div>
 
@@ -215,7 +219,7 @@
 
                     <div class="package-image">
 
-                        <img src="images/packages/Classic 2.jpeg" alt="Classic Grazing Table">
+                        <img src="images/packages/classic-2.webp" alt="Classic Grazing Table" width="720" height="960" loading="lazy" decoding="async">
 
                     </div>
 
@@ -231,7 +235,7 @@
 
                         </div>
 
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" type="button" aria-haspopup="dialog">
 
                             View Details
 
@@ -241,18 +245,11 @@
 
                 </article>
 
-
-            </div>
-
-            
-            <div class="packages-grid">
-
-
                 <article class="package-card card" data-package="brunch">
 
                     <div class="package-image">
 
-                        <img src="images/packages/Brunch 2.jpeg" alt="Brunch Grazing Table">
+                        <img src="images/packages/brunch-2.webp" alt="Brunch Grazing Table" width="693" height="960" loading="lazy" decoding="async">
 
                     </div>
 
@@ -268,7 +265,7 @@
 
                         </div>
 
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" type="button" aria-haspopup="dialog">
 
                             View Details
 
@@ -278,16 +275,11 @@
 
                 </article>
 
-            </div>
-
-            <div class="packages-grid">
-
-
                 <article class="package-card card" data-package="hybrid">
 
                     <div class="package-image">
 
-                        <img src="images/packages/Hybrid 2.jpeg" alt="Hybrid Grazing Table">
+                        <img src="images/packages/hybrid-2.webp" alt="Hybrid Grazing Table" width="720" height="960" loading="lazy" decoding="async">
 
                     </div>
 
@@ -303,7 +295,7 @@
 
                         </div>
 
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" type="button" aria-haspopup="dialog">
 
                             View Details
 
@@ -313,19 +305,11 @@
 
                 </article>
 
-
-
-            </div>
-
-            <div class="packages-grid">
-
-
-
                 <article class="package-card card" data-package="premium">
 
                     <div class="package-image">
 
-                        <img src="images/packages/Premium 3.jpeg" alt="Premium Grazing Table">
+                        <img src="images/packages/premium-3.webp" alt="Premium Grazing Table" width="720" height="960" loading="lazy" decoding="async">
 
                     </div>
 
@@ -341,7 +325,7 @@
 
                         </div>
 
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" type="button" aria-haspopup="dialog">
 
                             View Details
 
@@ -351,15 +335,12 @@
 
                 </article>
 
-
             </div>
-
-
 
 
             <div class="pricing-note">
 
-                <i class="fa-solid fa-circle-info"></i>
+                <svg class="icon icon-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
 
                 <p>
 
@@ -377,19 +358,19 @@
     </section>
 
 
-    <div id="packageModal" class="modal">
+    <div id="packageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
 
         <div class="modal-content">
 
-            <button class="close-modal">
+            <button class="close-modal" type="button" aria-label="Close">
 
-                <i class="fa-solid fa-xmark"></i>
+                <svg class="icon icon-xmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
 
             </button>
 
             <div class="modal-image">
 
-                <img id="modalImage" src="" alt="">
+                <img id="modalImage" alt="" width="720" height="960">
 
             </div>
 
@@ -416,7 +397,7 @@
 
                 </p>
 
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJHtPXCTONZ1l0MLhPXk3tu6ezKCepWCJlu-NFLzTanh9eEQ/viewform?fbzx=7140465393229716549&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" class="btn btn-primary">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJHtPXCTONZ1l0MLhPXk3tu6ezKCepWCJlu-NFLzTanh9eEQ/viewform?fbzx=7140465393229716549&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener" class="btn btn-primary">
 
                     Book This Package
 
@@ -453,15 +434,15 @@
 
                 <div class="faq-item">
 
-                    <button class="faq-question">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1">
 
                         <span>How do I book a grazing table?</span>
 
-                        <i class="fa-solid fa-plus"></i>
+                        <svg class="icon icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>
 
                     </button>
 
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-1">
 
                         <p>
                             Simply click any of the "Book Now" buttons on this page to complete our booking form. Once
@@ -474,15 +455,15 @@
 
                 <div class="faq-item">
 
-                    <button class="faq-question">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2">
 
                         <span>Can I customize a package?</span>
 
-                        <i class="fa-solid fa-plus"></i>
+                        <svg class="icon icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>
 
                     </button>
 
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-2">
 
                         <p>
                             Yes. Our packages can be tailored to suit your event, guest count, dietary preferences and
@@ -495,15 +476,15 @@
 
                 <div class="faq-item">
 
-                    <button class="faq-question">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3">
 
                         <span>Do you cater for corporate events?</span>
 
-                        <i class="fa-solid fa-plus"></i>
+                        <svg class="icon icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>
 
                     </button>
 
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-3">
 
                         <p>
                             Absolutely. We provide professional catering and grazing tables for meetings, conferences,
@@ -516,15 +497,15 @@
 
                 <div class="faq-item">
 
-                    <button class="faq-question">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4">
 
                         <span>How far in advance should I book?</span>
 
-                        <i class="fa-solid fa-plus"></i>
+                        <svg class="icon icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>
 
                     </button>
 
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-4">
 
                         <p>
                             We recommend booking as early as possible to secure your preferred date, especially during
@@ -537,15 +518,15 @@
 
                 <div class="faq-item">
 
-                    <button class="faq-question">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-5">
 
                         <span>Can you accommodate additional guests?</span>
 
-                        <i class="fa-solid fa-plus"></i>
+                        <svg class="icon icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>
 
                     </button>
 
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-5">
 
                         <p>
                             Yes. Additional guests can be accommodated at an extra cost depending on the selected
@@ -589,12 +570,10 @@
                 <div class="contact-info">
 
 
-                    <div class="contact-card">
-
-                        <a href="https://www.instagram.com/jeunfood?utm_source=qr" target="_blank" class="contact-card">
+                    <a href="https://www.instagram.com/jeunfood?utm_source=qr" target="_blank" rel="noopener" class="contact-card">
 
                             <div class="contact-icon">
-                                <i class="fa-brands fa-instagram"></i>
+                                <svg class="icon icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
                             </div>
 
                             <div>
@@ -602,15 +581,12 @@
                                 <p>@jeunfood</p>
                             </div>
 
-                        </a>
-                    </div>
+                    </a>
 
-                    <div class="contact-card">
-
-                        <a href="mailto:Jeuneats@gmail.com" class="contact-card">
+                    <a href="mailto:Jeuneats@gmail.com" class="contact-card">
 
                             <div class="contact-icon">
-                                <i class="fa-solid fa-envelope"></i>
+                                <svg class="icon icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
                             </div>
 
                             <div>
@@ -618,10 +594,7 @@
                                 <p>Jeuneats@gmail.com</p>
                             </div>
 
-                        </a>
-                    </div>
-
-
+                    </a>
 
                 </div>
 
@@ -637,7 +610,7 @@
                         special requirements.
                     </p>
 
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJHtPXCTONZ1l0MLhPXk3tu6ezKCepWCJlu-NFLzTanh9eEQ/viewform?fbzx=7140465393229716549&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" class="btn btn-primary">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJHtPXCTONZ1l0MLhPXk3tu6ezKCepWCJlu-NFLzTanh9eEQ/viewform?fbzx=7140465393229716549&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener" class="btn btn-primary">
 
                         Book Your Event
 
@@ -660,7 +633,7 @@
 
                 <div class="footer-brand">
 
-                    <h2>Jeun</h2>
+                    <h2>Jęun</h2>
 
                     <p>
                         Premium catering and beautifully curated grazing
@@ -682,6 +655,8 @@
 
                         <li><a href="#packages">Packages</a></li>
 
+                        <li><a href="#faq">FAQ</a></li>
+
                         <li><a href="#contact">Contact</a></li>
 
                     </ul>
@@ -695,23 +670,23 @@
                     <div class="social-icons">
 
                         <a href="https://www.instagram.com/jeunfood?utm_source=qr" target="_blank"
-                            aria-label="Instagram">
+                            rel="noopener noreferrer" aria-label="Instagram">
 
-                            <i class="fa-brands fa-instagram"></i>
+                            <svg class="icon icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
 
                         </a>
 
                         <a href="https://www.linkedin.com/in/j%C4%99unfoods?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
                             target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
 
-                            <i class="fa-brands fa-linkedin-in"></i>
+                            <svg class="icon icon-linkedin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><rect x="3.5" y="9" width="3.6" height="11.5" rx=".4"/><circle cx="5.3" cy="5.2" r="2.1"/><path d="M10 9h3.4v1.6c.6-1 1.9-1.9 3.7-1.9 3.5 0 4.1 2.3 4.1 5.2v6.6h-3.6v-5.8c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.9H10z"/></svg>
 
                         </a>
 
                         <a href="https://www.tiktok.com/@jeunfoods?_r=1&_t=ZS-98gHNo1UXA4" target="_blank"
                             rel="noopener noreferrer" aria-label="TikTok">
 
-                            <i class="fa-brands fa-tiktok"></i>
+                            <svg class="icon icon-tiktok" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.4 3c.4 2.4 1.9 4 4.4 4.2v3.2c-1.6.1-3.1-.4-4.4-1.2v6.4c0 3.4-2.7 5.9-6 5.9-3.4 0-6-2.6-6-5.8 0-3.5 3-6.1 6.7-5.6v3.3c-1.8-.4-3.4.8-3.4 2.4 0 1.4 1.1 2.5 2.6 2.5s2.7-1.1 2.7-3V3z"/></svg>
 
                         </a>
 
@@ -725,7 +700,7 @@
 
                 <p>
 
-                    © 2026 Jeun. All Rights Reserved.
+                    © 2026 Jęun. All Rights Reserved.
 
                 </p>
 
@@ -735,12 +710,6 @@
 
     </footer>
 
-
-    <script src="js/packages.js"></script>
-    <script src="js/modal.js"></script>
-    <script src="js/faq.js"></script>
-    <script src="js/backtotop.js"></script>
-    <script src="js/main.js"></script>
 
 </body>
 

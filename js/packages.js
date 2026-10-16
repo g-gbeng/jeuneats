@@ -1,7 +1,7 @@
 const packages = {
     classic: {
         title: "Classic Grazing Table",
-        image: "images/packages/Classic 2.jpeg",
+        image: "images/packages/classic-2.webp",
         price: "₦85,000",
         guests: "20 Guests",
         description:
@@ -18,7 +18,7 @@ const packages = {
 
      brunch: {
         title: "Brunch Grazing Table",
-        image: "images/packages/Brunch 2.jpeg",
+        image: "images/packages/brunch-2.webp",
         price: "₦120,000",
         guests: "30 Guests",
         description:
@@ -35,7 +35,7 @@ const packages = {
 
     hybrid: {
         title: "Hybrid Grazing Table",
-        image: "images/packages/Hybrid 2.jpeg",
+        image: "images/packages/hybrid-2.webp",
         price: "₦150,000",
         guests: "40 Guests",
         description:
@@ -52,7 +52,7 @@ const packages = {
 
     premium: {
         title: "Premium Grazing Table",
-        image: "images/packages/Premium 3.jpeg",
+        image: "images/packages/premium-3.webp",
         price: "₦250,000",
         guests: "60 Guests",
         description:
